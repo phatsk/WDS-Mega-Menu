@@ -61,7 +61,7 @@ if ( ! class_exists( 'WDS_Mega_Menus_Walker_Nav_Menu_Edit' ) ) {
 				'item_output' => false,
 			) );
 
-			// Disable on obile.
+			// Disable on mobile.
 			if ( isset( $args['depth'] ) && false == $args['depth'] ) :
 				$hide_on_mobile = get_post_meta( $id, 'hide_menu_on_mobile', true );
 				?>
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WDS_Mega_Menus_Walker_Nav_Menu_Edit' ) ) {
 					</div>
 					<script>
 						(function( $ ) {
-
+							// @TODO localize and enqueue!
 							wds_mega_menu_renderFeaturedImage( $, <?php echo esc_attr( absint( $id ) ); ?> );
 
 							'use strict';
@@ -142,7 +142,7 @@ if ( ! class_exists( 'WDS_Mega_Menus_Walker_Nav_Menu_Edit' ) ) {
 							$(function() {
 								$( '#set-menu-item-image-<?php echo esc_attr( absint( $id ) ); ?>' ).on( 'click', function( e ) {
 									e.preventDefault();
-									wds_mega_menu_renderMediaUploader(<?php echo esc_attr( absint( $id ) ); ?>);
+									WDS.MegaMenu.renderMediaUploader(<?php echo esc_attr( absint( $id ) ); ?>);
 								});
 
 								$( '#remove-menu-item-image-<?php echo esc_attr( absint( $id ) ); ?>' ).on( 'click', function( evt ) {
@@ -151,7 +151,7 @@ if ( ! class_exists( 'WDS_Mega_Menus_Walker_Nav_Menu_Edit' ) ) {
 									evt.preventDefault();
 
 									// Remove the image, toggle the anchors
-									wds_mega_menu_resetUploadForm( $, <?php echo esc_attr( absint( $id ) ); ?> );
+									WDS.MegaMenu.resetUploadForm( <?php echo esc_attr( absint( $id ) ); ?> );
 
 								});
 
